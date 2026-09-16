@@ -5,17 +5,41 @@ dotenv.config();
 
 const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
 
-const dbName = process.env.PGDATABASE;
-const dbUsername = process.env.PGUSER;
-const dbPassword = process.env.PGPASSWORD;
-const dbURL = process.env.PGHOST_UNPOOLED;
-const PORT = process.env.PORT || 5432;
+// const dbName = process.env.PGDATABASE;
+// const dbUsername = process.env.PGUSER;
+// const dbPassword = process.env.PGPASSWORD;
+// const dbURL = process.env.PGHOST_UNPOOLED;
+// const PORT = process.env.PORT || 5432;
 
 // DB connection
 // db_name , user, password, { configulation option }
-const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
-  host: dbURL,
-  port: PORT,
+// const sequelize = new Sequelize("product_db", dbUsername, dbPassword, {
+//   host: dbURL,
+//   port: PORT,
+//   dialect: "postgres",
+//   logging: false,
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false,
+//     },
+//   },
+// });
+
+// const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
+//   host: dbURL,
+//   port: PORT,
+//   dialect: "postgres",
+//   logging: false,
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false,
+//     },
+//   },
+// });
+
+const sequelize = new Sequelize(databaseUrl, {
   dialect: "postgres",
   logging: false,
   dialectOptions: {
