@@ -1,14 +1,23 @@
 // import Sequelize and DataTypes
 import { Sequelize, DataTypes } from "sequelize";
 
+const dbName = process.env.PGDATABASE;
+const dbUsername = process.env.PGUSER;
+const dbPassword = process.env.PGPASSWORD;
+const dbURL = process.env.PGHOST;
+
 // DB connection
 // db_name , user, password, { configulation option }
-const sequelize = new Sequelize("product_db", "dev_user", "dev_password", {
-  host: "localhost",
+const sequelize = new Sequelize("dbName", "dbUsername", "dbPassword", {
+  host: dbURL,
   port: 5433,
   dialect: "postgres",
   logging: false,
+  dialectOptions: {
+    ssl: { require: true, rejectUnauthorized: false}
+  },
 });
+
 
 // define databse schema
 // จากตาราง Product และต้องกำหนดทุกอันให้ถูก
