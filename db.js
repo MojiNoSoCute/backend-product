@@ -5,11 +5,11 @@ dotenv.config();
 
 const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
 
-// const dbName = process.env.PGDATABASE;
-// const dbUsername = process.env.PGUSER;
-// const dbPassword = process.env.PGPASSWORD;
-// const dbURL = process.env.PGHOST_UNPOOLED;
-// const PORT = process.env.PORT || 5432;
+const dbName = process.env.PGDATABASE;
+const dbUsername = process.env.PGUSER;
+const dbPassword = process.env.PGPASSWORD;
+const dbURL = process.env.PGHOST_UNPOOLED;
+const PORT = process.env.PORT || 5432;
 
 // DB connection
 // db_name , user, password, { configulation option }
@@ -20,21 +20,9 @@ const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
 //   logging: false,
 // });
 
-// const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
-//   host: dbURL,
-//   port: PORT,
-//   dialect: "postgres",
-//   logging: false,
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//       rejectUnauthorized: false,
-//     },
-//   },
-// });
-
-//deploy render
-const sequelize = new Sequelize(databaseUrl, {
+const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
+  host: dbURL,
+  port: PORT,
   dialect: "postgres",
   logging: false,
   dialectOptions: {
@@ -44,6 +32,18 @@ const sequelize = new Sequelize(databaseUrl, {
     },
   },
 });
+
+//deploy render
+// const sequelize = new Sequelize(databaseUrl, {
+//   dialect: "postgres",
+//   logging: false,
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false,
+//     },
+//   },
+// });
 
 // define databse schema
 // จากตาราง Product และต้องกำหนดทุกอันให้ถูก
