@@ -13,17 +13,11 @@ const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
 
 // DB connection
 // db_name , user, password, { configulation option }
-// const sequelize = new Sequelize("product_db", dbUsername, dbPassword, {
+// const sequelize = new Sequelize("product_db", "dev_user", "dev_password", {
 //   host: dbURL,
 //   port: PORT,
 //   dialect: "postgres",
 //   logging: false,
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//       rejectUnauthorized: false,
-//     },
-//   },
 // });
 
 // const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
@@ -39,6 +33,7 @@ const databaseUrl = process.env.DATABASE_URL_UNPOOLED;
 //   },
 // });
 
+//deploy render
 const sequelize = new Sequelize(databaseUrl, {
   dialect: "postgres",
   logging: false,
